@@ -1,0 +1,15 @@
+    <select id="selectAllMembersOnPkg" parameterType="java.util.Map" statementType="CALLABLE">
+        {CALL GETEMP(#{NAME, mode=IN},
+                      #{key, jdbcType=CURSOR, mode=OUT, javaType=java.sql.ResultSet,resultMap=memberVOMap})}
+    </select>
+
+    <logger name="LogController" additivity="false">
+            <level value = "ERROR" />
+            <appender-ref ref="INFO_LOG" />
+            <appender-ref ref="WARN_LOG" />
+        </logger>
+
+        <logger name="org.hibernate.SQL" additivity="false">
+            <level value = "INFO" />
+            <appender-ref ref="INFO_LOG" />
+        </logger>

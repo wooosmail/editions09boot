@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.editions09boot.dao.MemberDAO">
+
+    <resultMap id="memberVOMap" type="com.example.editions09boot.vo.MemberVO">
+    </resultMap>
+
+    <select id="selectAllMembers"
+            resultType="MemberVO">
+        SELECT 	ID, NAME, JOB, LOC
+        FROM		testuser.MEMBERS
+    </select>
+
+    <select id="selectAllMembersOnPkg" parameterType="java.util.Map" statementType="CALLABLE">
+        {CALL TESTPACKAGE.GETEMP_DEPTH1(#{NAME, mode=IN},
+                      #{key, jdbcType=CURSOR, mode=OUT, javaType=java.sql.ResultSet,resultMap=memberVOMap})}
+    </select>
+
+</mapper>
