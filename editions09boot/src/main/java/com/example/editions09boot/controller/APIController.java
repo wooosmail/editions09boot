@@ -63,7 +63,7 @@ public class APIController {
         List<MemberVO> allMembers = (List<MemberVO>) map.get("key");
 
 
-        logger.info("Info");
+        logger.info("Info Test");
         return allMembers;
     }
 
